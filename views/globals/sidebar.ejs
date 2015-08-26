@@ -1,0 +1,31 @@
+<%
+
+  var groups = {
+    'AUTHENTICATION': [
+      {
+        title: 'FamilySearch Authentication',
+        url: 'authentication'
+      }
+    ]
+  };
+
+%>
+
+<div id="sidebar" class="col-sm-3">
+  <% 
+    for(var groupName in groups){ 
+      var group = groups[groupName];
+  %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= groupName %></div>
+    <div class="list-group">
+      <% 
+        for(var i = 0; i < group.length; i++) {
+          var example = group[i];
+      %>
+      <a href="/examples/<%= example.url %>" class="list-group-item"><%= example.title %></a>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</div>
