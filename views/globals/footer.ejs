@@ -1,14 +1,39 @@
         </div><!-- end main column -->
       </div>
-      <p class="text-muted pull-right">footer</p>
     </div><!-- end main container -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/assets/cookies.js"></script>
     <script src="/assets/familysearch-javascript-sdk.min.js"></script>
     <script>
       var client = new FamilySearch({
         client_id: 'a02j0000008gOCiAAM',
         redirect_uri: 'https://fs-javascript-sdk-sample-app-justincy.c9.io/',
+        save_access_token: true,
         environment: 'sandbox'
       });
+      
+      var promise;
+      if(cookiesUtil.getItem('username')){
+        promise = Promise.resolve(cookiesUtil.getItem('username'));
+      } else if(client.hasAccessToken()){
+        promise = client.getCurrentUser().then(function(response){
+          var username = response.getUser().getContactName();
+          // Expire cookie after 24 hours (86400 seconds)
+          cookiesUtil.setItem('username', username, 86400);
+          return username;
+        });
+      }
+      
+      if(promise){
+        promise.then(function(username){
+          $('#username').text(username);
+        })
+      }
     </script>
+    <% if(typeof exampleSource !== 'undefined'){ %>
+    <script>
+    <%- exampleSource %>  
+    </script>
+    <% } %>
   </body>
 </html>
