@@ -1,4 +1,7 @@
 /**
+ * This file contains a utility that helps us manage cookies. We use a cookie
+ * to keep track of whether the user is logged in.
+ * 
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
  */
 var cookiesUtil = {

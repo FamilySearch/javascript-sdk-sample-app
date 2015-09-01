@@ -1,3 +1,8 @@
 #signOut {
   display: none;
 }
+
+pre {
+  height: 400px;
+  word-wrap: normal;
+}
