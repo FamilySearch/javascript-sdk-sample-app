@@ -22,6 +22,7 @@
   
   // Catch any errors
   .catch(function(e){
-    console.error(e);
+    $loader.hide();
+    $content.append(displayError(e));
   });
 </script>

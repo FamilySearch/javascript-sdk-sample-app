@@ -227,6 +227,15 @@ function rawDump(obj){
 }
 
 /**
+ * Print an error. Returns a jQuery DOM object
+ */
+function displayError(error){
+  return $('<div>')
+    .addClass('alert alert-danger')
+    .html('<strong>Error</strong>: ' + error.message);
+}
+
+/**
  * Generate a bootstrap panel with an embedded table
  */
 function createPanelTable(header, rows){

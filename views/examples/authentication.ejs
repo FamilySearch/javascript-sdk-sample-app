@@ -21,6 +21,11 @@
       
       // Display the access token
       $('#accessToken').text(accessToken);
+    })
+    
+    // Error handling
+    .catch(function(e){
+      $('#pre').after(displayError(e));
     });
   }
 </script>

@@ -37,6 +37,17 @@ if(cookiesUtil.getItem('username')){
     cookiesUtil.setItem('username', username, 86400);
     return username;
   });
+} 
+
+// Here we know that the user is not logged in. Show a warning on all example
+// pages telling the user that they need to login for the example to work.
+else {
+  if(document.location.pathname.indexOf('/examples/') === 0 && document.location.pathname.indexOf('authentication') === -1){
+    $('<div>')
+      .addClass('alert alert-warning')
+      .html('You need to sign in first for the examples to work. Sign in with the <a href="/examples/authentication">FamilySearch Authentication</a> example.')
+      .appendTo('#main');
+  }
 }
 
 // If we have a username then add it to the header
