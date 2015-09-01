@@ -12,15 +12,8 @@ app.get('/', function(req, res){
   res.render('index');
 });
 app.get('/examples/:example', function(req, res){
-  fs.readFile(path.join(__dirname, 'views', 'examples', req.params.example + '.js'), {encoding:'utf8'}, function(err, data){
-    if(err){
-      res.render(500);
-    } else {
-      res.render('globals/examples', {
-        exampleSource: data,
-        exampleName: req.params.example
-      });
-    }
+  res.render('globals/examples', {
+    exampleName: req.params.example
   });
 });
 
