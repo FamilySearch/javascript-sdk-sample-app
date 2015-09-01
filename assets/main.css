@@ -3,6 +3,6 @@
 }
 
 pre {
-  height: 400px;
+  max-height: 400px;
   word-wrap: normal;
 }

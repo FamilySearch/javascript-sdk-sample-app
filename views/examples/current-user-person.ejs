@@ -17,6 +17,11 @@
   // Get the person from the response and print
   .then(function(personResponse){
     $loader.hide();
-    $content.append('<pre>' + JSON.stringify(personResponse.getPerson(), null, 2));
+    displayPerson(personResponse.getPerson()).appendTo($content);
+  })
+  
+  // Catch any errors
+  .catch(function(e){
+    console.error(e);
   });
 </script>
