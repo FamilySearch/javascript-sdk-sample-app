@@ -1,12 +1,12 @@
-<div id="content">
-  <div class="row">
-    <div class="form-group col-sm-6 col-md-4">
-      <label for="personIdInput">Person Id</label>
-      <input type="text" class="form-control" id="personIdInput" placeholder="Person Id">
-    </div>
+<div class="row">
+  <div class="form-group col-sm-6 col-md-4">
+    <label for="personIdInput">Person Id</label>
+    <input type="text" class="form-control" id="personIdInput" placeholder="Person Id">
   </div>
-  <button id="submit" class="btn btn-primary">Read Person</button>
 </div>
+<button id="submit" class="btn btn-primary">Read Person</button>
+
+<div id="content"></div>
 
 <script>
   var $content = $('#content');
@@ -18,6 +18,7 @@
     if(id){
       
       // Display a loading indication
+      $content.html('');
       var $loader = getLoadingIndicator().appendTo($content);
       
       // Get the person

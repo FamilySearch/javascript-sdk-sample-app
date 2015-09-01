@@ -69,6 +69,97 @@ function displayPerson(person){
 }
 
 /**
+ * Return a jQuery DOM object representing a relationship
+ */
+function displayRelationship(relationship, person1, person2){
+  var $display = $('<div>');
+  createPanelTable('Couple Relationship', [
+    [
+      ['th', 'Relationship ID'],
+      ['th', 'Person1'],
+      ['th', 'Person2']
+    ],
+    [
+      ['td', relationship.getId()],
+      ['td', person1.getId()],
+      ['td', person2.getId()]
+    ],
+    [
+      ['td', ''],
+      ['td', person1.getDisplayName()],
+      ['td', person2.getDisplayName()]
+    ],
+    [
+      ['td', ''],
+      ['td', person1.getDisplayLifeSpan()],
+      ['td', person2.getDisplayLifeSpan()]
+    ]
+  ]).appendTo($display);
+  
+  // Facts
+  var facts = relationship.getFacts();
+  for(var i = 0; i < facts.length; i++){
+    displayFact(facts[i]).appendTo($display);
+  }
+  
+  rawDump(relationship).appendTo($display);
+  
+  return $display;
+}
+
+/**
+ * Return a jQuery DOM object representing a child and parents relationship
+ */
+function displayChildAndParentsRelationship(relationship, father, mother, child){
+  var $display = $('<div>');
+  createPanelTable('Child and Parents Relationship', [
+    [
+      ['th', 'Father'],
+      ['th', 'Mother'],
+      ['th', 'Child']
+    ],
+    [
+      ['td', father ? father.getId() : ''],
+      ['td', mother ? mother.getId() : ''],
+      ['td', child ? child.getId() : '']
+    ],
+    [
+      ['td', father ? father.getDisplayName() : ''],
+      ['td', mother ? mother.getDisplayName() : ''],
+      ['td', child ? child.getDisplayName() : '']
+    ],
+    [
+      ['td', father ? father.getDisplayLifeSpan() : ''],
+      ['td', mother ? mother.getDisplayLifeSpan() : ''],
+      ['td', child ? child.getDisplayLifeSpan() : '']
+    ]
+  ]).appendTo($display);
+  
+  // Father facts
+  var fatherFacts = relationship.getFatherFacts();
+  if(fatherFacts.length){
+    $('<h4>').text('Father Facts').appendTo($display);
+    for(var i = 0; i < fatherFacts.length; i++){
+      displayFact(fatherFacts[i]).appendTo($display);
+    }
+  }
+  
+  // Mother facts
+  var motherFacts = relationship.getMotherFacts();
+  if(motherFacts.length){
+    $('<h4>').text('Mother Facts').appendTo($display);
+    for(var i = 0; i < motherFacts.length; i++){
+      displayFact(motherFacts[i]).appendTo($display);
+    }
+  }
+  
+  // Raw
+  rawDump(relationship).appendTo($display);
+  
+  return $display;
+}
+
+/**
  * Return a jQuery DOM object representing a name
  */
 function displayName(name){
