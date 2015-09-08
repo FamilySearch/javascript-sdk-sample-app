@@ -1,6 +1,6 @@
 # FamilySearch JavaScript SDK Sample App
 
-Sample app for the [FamilySearch JavaScript SDK](https://github.com/FamilySearch/familysearch-javascript-sdk)
+Sample app for the [FamilySearch JavaScript SDK](https://github.com/FamilySearch/familysearch-javascript-sdk). A working version is running at [https://fs-javascript-sdk-sample-app.herokuapp.com/](https://fs-javascript-sdk-sample-app.herokuapp.com/).
 
 ## Installation
 
