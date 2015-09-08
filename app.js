@@ -1,7 +1,6 @@
 var express = require('express'),
     app = express(),
-    path = require('path'),
-    fs = require('fs');
+    path = require('path');
     
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -17,7 +16,7 @@ app.get('/examples/:example', function(req, res){
   });
 });
 
-var server = app.listen(process.env.PORT, process.env.IP, function () {
+var server = app.listen(process.env.PORT || 8080, process.env.IP, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('listening at http://%s:%s', host, port);
