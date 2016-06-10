@@ -8,12 +8,14 @@ var client = new FamilySearch({
   // A client ID for sandbox is obtained by registering with the FamilySearch developer's website
   client_id: 'a02j0000008gOCiAAM',
   
-  // When using the JavaScript SDK, the redirect uri doesn't need to be a
+  // When using the the popup method of authentication, the redirect uri doesn't need to be a
   // page that actually exists, it just needs to be a page on the same domain.
+  // But in our case we have an example that uses the full redirect method so
+  // we set the redirect_uri to the page that handle the redirect response.
   // Here we programmatically set the redirect uri to the base path of the
   // current domain. That helps the sample app work wherever it runs so
   // that we don't have to change this between development and production.
-  redirect_uri: document.location.protocol + '//' + document.location.host + '/',
+  redirect_uri: document.location.protocol + '//' + document.location.host + '/examples/authentication-redirect-end',
   
   // Store the access token in a cookie so that the user doesn't have to
   // login every time the page loads
