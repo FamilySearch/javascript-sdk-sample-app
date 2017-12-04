@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/FamilySearch/javascript-sdk-sample-app",
   "dependencies": {
-    "ejs": "2.3.3",
+    "ejs": "2.5.7",
     "express": "4.13.3"
   }
 }
